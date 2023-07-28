@@ -20,7 +20,7 @@ const Scanpage = (sd) => {
     <div className="w-[350px] h-[50%]">
       <QrScanner
         ref={qrRef}
-        delay={300}
+        delay={300} 
         // constraints={{
         //   facingMode: "environment",
         // }}
@@ -29,6 +29,7 @@ const Scanpage = (sd) => {
         onScan={handleScanWebCam}
       />
       <p>111</p>
+      <img src="./imaages/qrcode.png" width={'400px'} alt="" />
     </div>
   );
 };

@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { db } from "./componenets/firebaseConfig";
 import { contextData } from "./ContextData";
 import Qrgenerate from "./componenets/Qrgenerate";
-import Scanpage from "./Scanpage";
+import Scanpage from "./componenets/Scanpage";
 
 function App() {
   let [data, setData] = useState([]);
