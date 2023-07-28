@@ -29,8 +29,6 @@ function App() {
     };
   }, []);
 
-  console.log(data)
-
   return (
     <contextData.Provider value={{ data , db }}>
       <div className="App container mx-auto ">
