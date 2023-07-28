@@ -1,0 +1,19 @@
+buttons : #f3f4ea , #d0fbd6
+text : #050505
+accent : #ed3312
+background color #fafafa
+
+--> 
+Home page --> register
+
+logo : Clock-In
+
+button 1 login in 
+
+butoon 2 register 
+
+Header: "Clock-In with Confidence: Introducing Our Employee Tracking App"
+
+Short Paragraph: "Effortlessly track employee attendance for a streamlined workday experience."
+
+scan button : Scan
