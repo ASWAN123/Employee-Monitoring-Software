@@ -6,12 +6,11 @@ import { contextData } from '../ContextData';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { auth } from './firebaseConfig';
 import firebase from "firebase/compat/app";
-// import { SuperBalls } from '@uiball/loaders'
 import { JellyTriangle } from '@uiball/loaders'
 
 const Register = () => {
     let navigate = useNavigate()
-    const  {data ,  db}  = useContext(contextData)
+    const  { data ,  db }  = useContext(contextData)
     const [ loading ,  setLoading ] = useState(false)
 
     let [userInfo , setUserInfo ] = useState({
@@ -23,23 +22,22 @@ const Register = () => {
 
     const CreateAccount = async (e) => {
         e.preventDefault()
-        console.log('clicked')
         setLoading(true)
         let uid ;
         await createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
         .then((res) => {
             uid = res.user.uid
+            db.collection('tracking').doc(uid).set({ logs:[] , user:{...userInfo , 'id':uid} })
           })
-        .catch(err => console.log(err.message))
-        await db.collection('tracking').doc('V1wNxjPaHzRgmozmoqHf').set({users:firebase.firestore.FieldValue.arrayUnion({...userInfo , 'id':uid})})
-
+        .catch( err => console.log(err.message) )
         setUserInfo({
             fullName:'',
             email:'',
             password:'',
             phone:'',
         })
-        navigate('/qrgenerate' , {state:uid} )
+        localStorage.setItem("user", JSON.stringify(uid) )
+        navigate('/qrgenerate' , { state:uid } )
     }
 
     return (

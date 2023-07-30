@@ -1,39 +1,46 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome , AiOutlineApi } from "react-icons/ai";
+import Logo from "./Logo";
 
-const Header = () => {
+const Header = ({authenticated}) => {
   let navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
-  let location  = useLocation()
-  let path = location.pathname
+  let location  = useLocation();
+  let path = location.pathname;
+
+  
+
+  
  
 
   return (
-    <header className="flex gap-4 p-2 mt-2 items-center">
-      <p
-        onClick={() => {
-          navigate("/");
-        }}
-        className="font-semibold text-[1.8rem] text-white "
-      >
-        Clock-<span className=" text-red-400 ">In</span>
-      </p>
+    <header className="flex gap-4 p-2 mt-2 items-center relative ">
+      <Logo />
 
       {/* desktop version */}
-      <div className="ml-auto  gap-4  justify-center items-center md:flex hidden">
-        <Link to="/login" className=" text-[#8fb3ff] py-2 px-6 rounded-md  ">
+{  !authenticated &&    <div className="ml-auto  gap-4  justify-center items-center md:flex hidden">
+        <Link to="/login" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" >
           Login
         </Link>
-        <Link to="/register" className="bg-[#fbf593] py-2 px-6 rounded-md  ">
+
+        <Link to="/register" className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-2 mb-2 ">
           Register
         </Link>
-      </div>
+
+      </div>}
+
+      {
+        authenticated &&         <Link to="/account" className="ml-auto hidden md:block text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-2 mb-2 ">
+        My Account
+      </Link>
+      }
 
       {/* mobile version */}
       <div  className="md:hidden ml-auto">
-         { path =="/" && <BsFillPersonFill onClick={() =>{navigate('/login')}} color="white" size={32} /> }
+         { path =="/" && !authenticated  && <BsFillPersonFill onClick={() =>{navigate('/login')}} color="white" size={32} /> }
+         { path =="/" && authenticated  && <BsFillPersonFill onClick={() =>{navigate('/account')}} color="white" size={32} /> }
          { ( path == "/login" || path == "/register"  ) &&  <AiFillHome onClick={() =>{navigate('/')}} color="white" size={32} /> }
       </div>
       
