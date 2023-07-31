@@ -24,7 +24,7 @@ const Homepage = () => {
           >
             <span></span>
           </button> */}
-          <button onClick={() => {navigate('/scanpage')}} type="button" class="text-gray-900 w-[300px] text-[25px]  bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl  font-semibold rounded-lg text-sm px-5 py-3 text-center mr-2 mb-2">Get Start Scanning</button>
+          <button onClick={() => {navigate('/scanpage')}} type="button" className="text-gray-900 w-[300px] text-[25px]  bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl  font-semibold rounded-lg text-sm px-5 py-3 text-center mr-2 mb-2">Get Start Scanning</button>
 
         </div>
     </main>

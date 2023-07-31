@@ -17,7 +17,7 @@ const Scanpage = () => {
   const { data, db } = useContext(contextData);
   const  [ confirmed , setConfirmed] = useState(false)
   const  [ danger , setDanger ] = useState(false)
-  // const [play] = useSound(boopSfx);
+
 
   
   // check if the  user  exsit  in db  and  add  the  log  to  his record
@@ -89,22 +89,23 @@ const Scanpage = () => {
   };
 
   return (
-    <div className="flex flex-col p-6 md:p-0 md:flex-row items-center gap-4 justify-center mt-2 md:mt-4 relative">
-      <div
-        className="w-full h-[350px] md:w-[500px] md:h-[500px]  rounded-lg relative "
-      >
+    <div className="flex flex-col  md:p-0  md:flex-row-reverse items-center gap-4 justify-center mt-2 md:mt-4 relative">
+      {/* <div
+        className="w-[50%] "
+      > */}
         {/*  scanning stuff  */}
         
         <QrReader
+        className=" w-[90%] md:w-[50%]  "
           onResult={HandleResults}
           constraints={{ facingMode: "environment" }}
         />
         
 
         
-      </div>
+      {/* </div> */}
 
-      <div className="w-full md:w-[500px] flex flex-col gap-4 p-6  text-[20px] font-semibold order-1">
+      <div className="w-full md:w-[500px] flex flex-col gap-4 p-6 mt-2 text-[20px] font-semibold order-1">
          <p className="text-white mb-4 text-center">
           Attention employees: Before scanning your badge to clock in or out .
         </p>

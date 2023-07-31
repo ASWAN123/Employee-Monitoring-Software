@@ -4,13 +4,6 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const Mainpage = () => {
-  const [uid ,  setUid] = useState('')
-  useEffect(() => {
-    const uid = JSON.parse(localStorage.getItem("user"))
-    setUid(uid)
-    console.log(uid)
-  } ,  [])
-
 
   return (
     <div className='w-full '>

@@ -6,3 +6,23 @@
 body {
   background-color: #010322 ;
 }
+
+
+/* Additional CSS for loader */
+.barcode-image {
+  animation: moveUpDown 2s linear infinite;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

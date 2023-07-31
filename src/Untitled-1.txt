@@ -17,3 +17,28 @@ Header: "Clock-In with Confidence: Introducing Our Employee Tracking App"
 Short Paragraph: "Effortlessly track employee attendance for a streamlined workday experience."
 
 scan button : Scan
+
+
+Dashboard Page:
+
+Overview: Display a summary of the employee's key performance metrics, such as completed tasks, sales, or any other relevant data.
+Quick Actions: Provide quick links or buttons for common tasks, like creating a new ticket, accessing recent history, or updating the profile.
+Announcements: Show company-wide announcements, important news, or upcoming events that employees should be aware of.
+Notifications: If your app generates notifications for employees (e.g., new tickets assigned), display them here.
+History Page:
+
+Activity Log: Show a chronological list of the employee's recent activities, such as completed tasks, closed tickets, or any other relevant actions.
+Filter and Search: Allow employees to filter and search through their history based on date, type of activity, or any other relevant criteria.
+Performance Trends: Display graphical representations of the employee's performance over time, which can help them track their progress.
+Profile Page:
+
+Personal Information: Allow employees to view and edit their personal information, such as name, contact details, and job title.
+Profile Picture: Give employees the option to upload or update their profile picture.
+Change Password: Enable employees to change their account password securely.
+Preferences: Allow customization of app preferences, such as theme selection or notification settings.
+Tickets Page:
+
+Ticket List: Show a list of assigned tickets or tasks, along with relevant details like priority, due date, and status.
+Ticket Details: When an employee clicks on a ticket, display detailed information about it, including the description, attachments, and any updates.
+Ticket Actions: Provide options for employees to perform actions related to tickets, such as adding comments, changing status, or reassigning them.
+Search and Filters: Allow employees to search for specific tickets or apply filters based on various criteria (e.g., status, category).

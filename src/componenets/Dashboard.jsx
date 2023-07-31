@@ -6,19 +6,19 @@ import Mainpage from "./DashbaordComp/Mainpage";
 import Logs from "./DashbaordComp/Logs";
 import { useState } from "react";
 import Logo from "./Logo";
+import { getAuth, signOut } from "firebase/auth";
 
-const Dashboard = ({ authenticated, SetIsauthenticated }) => {
-  // const [ isauthenticated , setauthenticated ] = useState(false)
-  let navigate = useNavigate();
-  const location = useLocation();
-  const path = location.pathname;
-  let uid = location.state;
+const Dashboard = ({auth}) => {
+  let navigate = useNavigate() ;
 
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem("user"))) {
-      SetIsauthenticated(true);
-    }
-  }, []);
+
+
+
+  const handlelogout = () => {
+    signOut(auth);
+    navigate('/login')
+  }
+
 
   return (
     <div className="w-full flex  text-white">
@@ -68,18 +68,14 @@ const Dashboard = ({ authenticated, SetIsauthenticated }) => {
           
           <button
             type="button"
-            onClick={() => {
-              localStorage.removeItem("user");
-              navigate("/login");
-              SetIsauthenticated(false);
-            }}
+            onClick={handlelogout}
             className="text-white ml-auto bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-6 py-2.5 text-center mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
           >
             Log out
           </button>
         </header>
         {/* body */}
-        <div id="main">{authenticated ? <Outlet /> : navigate("/login")}</div>
+        <div id="main"><Outlet /></div>
       </div>
     </div>
   );
