@@ -37,7 +37,7 @@ const Register = ({auth}) => {
         await createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
         .then((res) => {
             uid = res.user.uid
-            db.collection('tracking').doc(uid).set({ logs:[] , user:{...userInfo , 'id':uid} })
+            db.collection('tracking').doc(uid).set({ logs:{} , user:{...userInfo , 'id':uid} })
             setUserInfo({first_name:'' , last_name:'' , email:'', password:'', phone:'',})
             navigate('/qrgenerate' )
           })
