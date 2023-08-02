@@ -8,10 +8,8 @@ import toast, { Toaster } from "react-hot-toast" ;
 const Profile = () => {
   const { auth, data, db } = useContext(contextData);
   const user = data?.find((x) => x.id == auth.currentUser.uid)?.user;
-  console.log("user", user, auth.currentUser.uid);
 
   const [firstname, setFirstname] = useState(user?.first_name);
-  // console.log(firstname ,  user?.first_name ,  'data')
   const [lastname, setLastname] = useState(user?.last_name);
   const [phone, setPhone] = useState(user?.phone);
   const [changes, setChanges] = useState(false);

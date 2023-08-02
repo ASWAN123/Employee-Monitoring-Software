@@ -24,8 +24,6 @@ function App() {
   let path = location.pathname
   // const [ auth , setAuth] = useState(getAuth(myapp))
   let navigate = useNavigate()
-  console.log({ ...auth} ,  '0')
-  console.log(auth.currentUser ,  '1')
 
 
   useEffect(() => {

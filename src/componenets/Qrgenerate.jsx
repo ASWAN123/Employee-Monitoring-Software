@@ -37,7 +37,6 @@ const Qrgenerate = ({ auth }) => {
     navigate("/account");
   };
 
-  console.log(auth.currentUser);
 
   return (
     <>

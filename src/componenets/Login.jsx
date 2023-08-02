@@ -33,7 +33,6 @@ const Login = ({ auth }) => {
         return  navigate('/account')
       });
     } catch (err) {
-      console.log(err.message);
       if (err.message.includes("user-not-found")) {
         toast.error("No account associated with this email.");
       }

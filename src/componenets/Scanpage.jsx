@@ -84,9 +84,7 @@ const Scanpage = () => {
       setScanning(true);
     }
 
-    if (error) {
-      console.log("Scanning......");
-    }
+
   };
 
   return (
