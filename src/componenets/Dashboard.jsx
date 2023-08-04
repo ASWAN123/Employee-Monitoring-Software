@@ -65,7 +65,7 @@ const Dashboard = ({auth}) => {
           <div className="ml-4 w-[50%]  h-[40px] ">
             <input type="text"  className="w-full h-[100%] bg-transparent outline-none px-2 placeholder:text-[14px] text-white " placeholder="Search for , ( John Smith ) 'admin'"/>
           </div>
-          
+          <p>{auth.currentUser.email}</p>
           <button
             type="button"
             onClick={handlelogout}

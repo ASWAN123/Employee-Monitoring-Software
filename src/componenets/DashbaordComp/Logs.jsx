@@ -11,35 +11,15 @@ import { useEffect } from "react";
 
 
 const Logs = () => {
-  const [ startDate , setStartDate] = useState(new Date());
-  const [EndDate, setEndtDate] = useState();
-  const { auth, data, db } = useContext(contextData);
-  const history = data?.find((x) => x.id == auth.currentUser.uid)?.logs;
-  const  [ logs , setLogs ]  =useState( Object.entries(history).map(([date, data]) => {
-    return { date, data };
-  }));
+  const [ startDate , setStartDate] = useState(new Date()) ;
+  const [EndDate, setEndtDate] = useState() ;
+  const { auth, data, db } = useContext(contextData) ;
+  const logs = data?.find((x) => x.id == auth.currentUser.uid)?.logs ;
 
 
 
 
-  // useEffect(() => {
-  //   if(startDate !== null){
-  //     let x = new Date(startDate)
-  //     let y = x.getTime() /1000
 
-  //     let Filteredlog = Object.entries(history).filter(([date , data]) => {
-  //       const dateObject = new Date(date);
-  //       const timestamp = Math.floor(dateObject.getTime() / 1000);
-  //       if( timestamp > y ){
-  //         console.log(date , data)
-  //         return {date , data}
-  //       }
-  //     });
-
-  //     setLogs(Filteredlog)
-
-  //   }
-  // } ,  [startDate])
 
   return (
     <div className="w-full"> 
@@ -61,6 +41,10 @@ const Logs = () => {
           <table className=" text-left text-gray-500 	">
             <thead className=" text-white  capitalize bg-[#99A98F] text-[14px]">
             <THead/>
+            {
+              logs?.map((log ,  index) =>  <Row  key ={index} log={log} />) 
+            }
+             
             </thead>
             <tbody className="text-black">
             {

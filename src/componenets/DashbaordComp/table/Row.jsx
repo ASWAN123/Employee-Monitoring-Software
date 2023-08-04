@@ -21,6 +21,7 @@ function formatDuration(start_date, end_date) {
 }
 
 export const Row = ({ log }) => {
+
   let start_date = Math.min.apply(
     Math,
     log["data"].filter((x) => x.action == "clock in").map((x) => x.date)
@@ -33,53 +34,23 @@ export const Row = ({ log }) => {
 
   const [details, setDetails] = useState(false);
 
+  console.log(log)
 
-
-
+  // console.log(log.date)
 
   return (
     <>
-      <tr class="hover:bg-gray-50 text-[14px] border-b ">
-        <td className="px-6 py-2   whitespace-nowrap  ">{log.date}</td>
-        <td className="px-6 py-2 whitespace-nowrap ">
-          {new Date(start_date * 1000).toLocaleTimeString()}
-        </td>
-        <td className="px-6 py-2 whitespace-nowrap ">
-          {new Date(end_date * 1000).toLocaleTimeString()}
-        </td>
-        <td className="px-6 py-2 whitespace-nowrap ">{formatDuration(start_date, end_date)}</td>
-        <td
-          className="px-6 py-2 whitespace-nowrap  hover:cursor-pointer "
-          onClick={() => {
-            setDetails(!details);
-          }}
-        >
-          <CgDetailsMore size={24} />
-        </td>
-        <td className="px-6 py-2 whitespace-nowrap  text-right"></td>
+      <tr className="hover:bg-gray-50 text-[14px] border-b ">
+        
       </tr>
 
-      {details &&
+      {/* {details &&
         log.data.map((x, index) => {
           return (
             <tr class="hover:bg-gray-50 text-[14px] whitespace-nowrap  " key={index}>
-              <td className="px-6 py-2  whitespace-nowrap  " > {index + 1} </td>
-              <td className="px-6 py-2  whitespace-nowrap ">
-                {x.action == "clock in"
-                  ? new Date(x.date.seconds * 1000).toLocaleTimeString()
-                  : "---"}
-              </td>
-              <td className="px-6 py-2  whitespace-nowrap">
-                {x.action == "clock out"
-                  ? new Date(x.date.seconds * 1000).toLocaleTimeString()
-                  : "---"}
-              </td>
-              <td className="px-6 py-2  whitespace-nowrap">---</td>
-              <td className="px-6 py-2  hover:cursor-pointer  capitalize "><span className= { x.action == 'clock in' ? "  rounded-full text-green-400 " : "  rounded-full text-red-400" }>{x.action}</span></td>
-              <td className="px-6 py-2  whitespace-nowrap text-right text-blue-600 hover:cursor-pointer ">Report</td>
             </tr>
           );
-        })}
+        })} */}
 
     </>
   );
