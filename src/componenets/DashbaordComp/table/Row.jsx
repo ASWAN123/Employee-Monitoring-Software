@@ -20,38 +20,21 @@ function formatDuration(start_date, end_date) {
   return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 }
 
-export const Row = ({ log }) => {
-
-  let start_date = Math.min.apply(
-    Math,
-    log["data"].filter((x) => x.action == "clock in").map((x) => x.date)
-  );
-
-  let end_date = Math.max.apply(
-    Math,
-    log["data"].filter((x) => x.action == "clock out").map((x) => x.date)
-  );
-
-  const [details, setDetails] = useState(false);
-
-  console.log(log)
-
-  // console.log(log.date)
+export const Row = ({ logs }) => {
+  let rowHeaders = ["Clock in", "Clock out", "Clock in", "Clock out"];
 
   return (
     <>
-      <tr className="hover:bg-gray-50 text-[14px] border-b ">
-        
-      </tr>
-
-      {/* {details &&
-        log.data.map((x, index) => {
-          return (
-            <tr class="hover:bg-gray-50 text-[14px] whitespace-nowrap  " key={index}>
-            </tr>
-          );
-        })} */}
-
+      {rowHeaders.map((x, index) => {
+        return (
+          <tr
+            key={index}
+            className="hover:bg-gray-50 py-2 text-[16px]  border-b "
+          >
+            <td>{x}</td>
+          </tr>
+        );
+      })}
     </>
   );
 };

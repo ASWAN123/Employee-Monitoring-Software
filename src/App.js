@@ -16,15 +16,16 @@ import Tickets from "./componenets/DashbaordComp/Tickets";
 import Profile from "./componenets/DashbaordComp/Profile";
 import { auth } from "./firebaseConfig";
 import { getAuth , onAuthStateChanged } from "firebase/auth";
-
+import { DotWave } from '@uiball/loaders'
 
 function App() {
   let [data, setData] = useState([]);
   let location = useLocation()
   let path = location.pathname
-  // const [ auth , setAuth] = useState(getAuth(myapp))
   let navigate = useNavigate()
+  const [Loading , setLoading] = useState(true)
 
+  
 
   useEffect(() => {
     const unsubscribe = db.collection("tracking").onSnapshot((snapshot) => {
@@ -40,27 +41,60 @@ function App() {
     } ;
   }, []);
 
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        setTimeout(() => {
+          setLoading(false)
+        }, 3000);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        setTimeout(() => {
+          setLoading(false)
+          navigate('/login')
+        }, 2000);
+        
+  
+      }
+    });
+  } ,  [])
+
 
   return (
-    <contextData.Provider value={{ data , db , auth }}>
-      <div className="App mx-auto ">
-      { !(path === '/qrgenerate' || path.includes('/account') || path.includes('/scanpage') ) && < Header auth={auth} /> }
+    <>
+       { !Loading && <contextData.Provider value={{ data , db , auth }}>
+        <div className="App mx-auto ">
+        { !(path === '/qrgenerate' || path.includes('/account') || path.includes('/scanpage') ) && < Header auth={auth} /> }
 
-        <Routes>
-          <Route exact path="/" element={<Homepage   />}></Route>
-          <Route exact path="/login" element={<Login auth={auth} />}></Route>
-          <Route exact path="/register" element={<Register auth={auth} />}></Route>
-          <Route exact path="/qrgenerate" element={ auth.currentUser ?  <Qrgenerate auth={auth} /> : <Navigate to='/login'/> }></Route>
-          <Route exact path="/scanpage" element={<Scanpage />}></Route>
-          <Route exact path="/account" element={ auth.currentUser ? <Dashboard auth={auth} /> : <Navigate to="/" /> }>
-            <Route index element={<Mainpage />} />
-            <Route exact path="history" element={ <Logs />   } />
-            <Route exact path="tickets" element={ <Tickets /> } />
-            <Route exact path="profile" element={<Profile />} />
-          </Route>
-        </Routes>
-      </div>
-    </contextData.Provider>
+          <Routes>
+            <Route exact path="/" element={<Homepage   />}></Route>
+            <Route exact path="/login" element={<Login auth={auth} />}></Route>
+            <Route exact path="/register" element={<Register auth={auth} />}></Route>
+            <Route exact path="/qrgenerate" element={ auth.currentUser ?  <Qrgenerate auth={auth} /> : <Navigate to='/login'/> }></Route>
+            <Route exact path="/scanpage" element={<Scanpage />}></Route>
+            <Route exact path="/account" element={ auth.currentUser ? <Dashboard auth={auth} /> : <Navigate to="/" /> }>
+              <Route index element={<Mainpage />} />
+              <Route exact path="history" element={ <Logs />   } />
+              <Route exact path="tickets" element={ <Tickets /> } />
+              <Route exact path="profile" element={<Profile />} />
+            </Route>
+          </Routes>
+        </div>
+      </contextData.Provider> }
+    { Loading &&     <div className="absolute  w-full h-screen z-11 top-0 bg-blue-950/80 flex justify-center items-center ">
+            <DotWave 
+            size={47}
+            speed={1} 
+            color="white" 
+            />
+    </div> }
+    </>
   );
 }
 

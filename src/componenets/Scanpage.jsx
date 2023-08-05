@@ -15,9 +15,9 @@ const Scanpage = () => {
   const [danger, setDanger] = useState(false);
   const refresh = () => { setTimeout(() => { setResult("No result");setScanning(false); setAction('') ; } ,  3000)}
 
-  useEffect(() => {
-    let today = new Date().setHours(0, 0, 0, 0);
-    let userExsit = data?.find((doc) => doc.id == result);
+  useEffect(() => { 
+    let today = new Date().setHours(0, 0, 0, 0) ;
+    let userExsit = data?.find((doc) => doc.id == result) ;
     let workTimesData = userExsit?.workTimesData || [] ; // array of data
     let TodayWorkTimes = workTimesData?.find((x) => x.date == today)  ; // object
 
@@ -63,7 +63,7 @@ const Scanpage = () => {
 
       }else{
         // data not exist create
-        let HappyNewDay = { 'date':today , 'Clocktimes':[ {'clockIn' : new Date() ,  'clockOut': '' } , {'clockIn' : '' ,  'clockOut': '' } ,{'clockIn' : '' ,  'clockOut': '' } , {'clockIn' : '' ,  'clockOut': '' } ] }
+        let HappyNewDay = { 'date':today , 'Clocktimes':[ {'clockIn' : new Date() ,  'clockOut': '' } , {'clockIn' : '' ,  'clockOut': '' } ] }
         refresh()
         toast.success('Successfully Clocked in')
         db.collection('tracking').doc(result).update({...userExsit ,  workTimesData: [ ...workTimesData ,  HappyNewDay ] })
