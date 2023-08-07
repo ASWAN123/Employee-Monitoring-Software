@@ -41,22 +41,31 @@ function App() {
   }, []);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setTimeout(() => {
-          setLoading(false)
-        }, 3000) ;
-        
-      } else {
-        setTimeout(() => {
-          setLoading(false)
-          navigate('/Employee-Monitoring-Software')
-        }, 2000);
-        
+    const waitingforauth = () => {
+      return new Promise((resolve) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setTimeout(() => {
+              setLoading(false);
+              resolve(true);
+            }, 3000);
+          } else {
+            setTimeout(() => {
+              setLoading(false);
+              navigate('/Employee-Monitoring-Software');
+              resolve(false);
+            }, 2000);
+          }
+          unsubscribe(); // Unsubscribe the listener to avoid memory leaks
+        });
+      });
+    };
   
-      }
+    waitingforauth().then((userExists) => {
+
     });
-  } ,  [])
+  }, []);
+  
 
 
   return (
