@@ -30,7 +30,7 @@ const Login = ({ auth }) => {
       ).then((userCredential) => {
         setUserdata({ email: "", password: "" });
         setLoading(false);
-        return  navigate('/account')
+        return  navigate('/Employee-Monitoring-Software/account')
       });
     } catch (err) {
       if (err.message.includes("user-not-found")) {
@@ -90,7 +90,7 @@ const Login = ({ auth }) => {
         <p className="text-center mt-4 md:hidden ">Or</p>
         <div
           onClick={() => {
-            navigate("/register");
+            navigate("/Employee-Monitoring-Software/register");
           }}
           className="mt-5  cursor-pointer flex bg-[#fbf593] py-2 rounded-md px-6 items-center justify-center gap-2 w-full md:hidden "
         >

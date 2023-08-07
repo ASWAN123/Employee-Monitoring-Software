@@ -42,8 +42,8 @@ const Header = ({auth}) => {
       {/* mobile version */}
       <div  className="md:hidden ml-auto">
          { path =="/" && !auth.currentUser  && <BsFillPersonFill onClick={() =>{navigate('/Employee-Monitoring-Software/login')}} color="white" size={32} /> }
-         { ( path == "/Employee-Monitoring-Software/login" || path == "/register"  ) &&  <AiFillHome onClick={() =>{navigate('/')}} color="white" size={32} /> }
-         { path =="/" && auth.currentUser  && <BsFillPersonFill onClick={() =>{navigate('/account')}} color="white" size={32} /> }
+         { ( path == "/Employee-Monitoring-Software/login" || path == "/register"  ) &&  <AiFillHome onClick={() =>{navigate('/Employee-Monitoring-Software')}} color="white" size={32} /> }
+         { path =="/" && auth.currentUser  && <BsFillPersonFill onClick={() =>{navigate('/Employee-Monitoring-Software/account')}} color="white" size={32} /> }
       </div>
       
     </header>

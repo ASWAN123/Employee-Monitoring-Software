@@ -37,7 +37,7 @@ const Qrgenerate = ({ auth }) => {
           style: { borderRadius: "10px", background: "#fff", color: "#333" },
         }
       );
-    navigate("/account");
+    navigate("/Employee-Monitoring-Software/account");
   };
 
 

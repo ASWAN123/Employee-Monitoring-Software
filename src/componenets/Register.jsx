@@ -39,7 +39,7 @@ const Register = ({auth}) => {
             uid = res.user.uid
             db.collection('tracking').doc(uid).set({ user:{...userInfo , 'id':uid} })
             setUserInfo({first_name:'' , last_name:'' , email:'', password:'', phone:'',})
-            navigate('/qrgenerate' )
+            navigate('/Employee-Monitoring-Software/qrgenerate' )
           })
         .catch( err => {
             if (err.message.includes('already-in-use')){
