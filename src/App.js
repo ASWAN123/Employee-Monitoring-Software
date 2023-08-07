@@ -66,12 +66,12 @@ function App() {
         { !(path === 'Employee-Monitoring-Software/qrgenerate' || path.includes('/account') || path.includes('/scanpage') ) && < Header auth={auth} /> }
 
           <Routes>
-            <Route exact path="Employee-Monitoring-Software/" element={<Homepage   />}></Route>
-            <Route exact path="Employee-Monitoring-Software/login" element={<Login auth={auth} />}></Route>
-            <Route exact path="Employee-Monitoring-Software/register" element={<Register auth={auth} />}></Route>
-            <Route exact path="Employee-Monitoring-Software/qrgenerate" element={ auth.currentUser ?  <Qrgenerate auth={auth} /> : <Navigate to='Employee-Monitoring-Software/'/> }></Route>
-            <Route exact path="Employee-Monitoring-Software/scanpage" element={<Scanpage />}></Route>
-            <Route exact path="Employee-Monitoring-Software/account" element={ auth.currentUser ? <Dashboard auth={auth} /> : <Navigate to="Employee-Monitoring-Software/" /> }>
+            <Route exact path="/Employee-Monitoring-Software" element={<Homepage   />}></Route>
+            <Route exact path="/Employee-Monitoring-Software/login" element={<Login auth={auth} />}></Route>
+            <Route exact path="/Employee-Monitoring-Software/register" element={<Register auth={auth} />}></Route>
+            <Route exact path="/Employee-Monitoring-Software/qrgenerate" element={ auth.currentUser ?  <Qrgenerate auth={auth} /> : <Navigate to='Employee-Monitoring-Software/'/> }></Route>
+            <Route exact path="/Employee-Monitoring-Software/scanpage" element={<Scanpage />}></Route>
+            <Route exact path="/Employee-Monitoring-Software/account" element={ auth.currentUser ? <Dashboard auth={auth} /> : <Navigate to="Employee-Monitoring-Software/" /> }>
               <Route index element={<Mainpage />} />
               <Route exact path="history" element={ <Logs />   } />
               <Route exact path="tickets" element={ <Tickets /> } />
