@@ -1,5 +1,6 @@
 {
   "name": "employee-monitoring-software",
+  "homepage": "https://aswan123.github.io/Employee-Monitoring-Software/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
