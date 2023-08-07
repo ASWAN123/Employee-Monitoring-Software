@@ -37,11 +37,11 @@ const Profile = () => {
   return (
     <>
     <div className=" ">
-      <h1 className="text-black m-4 text-[18px] font-semibold ">
+      <h1 className="text-black m-4 text-[18px] font-semibold  text-center ">
         Manage Your Account and Personal Information
       </h1>
 
-      <form onSubmit={updateUserData} className="p-6 md:w-[80%] md:mx-auto">
+      <form onSubmit={updateUserData} className="md:w-[500px] ml-8  mt-8">
         <div className=" relative z-0 w-full mb-6 group">
           <input
             value={user?.email}

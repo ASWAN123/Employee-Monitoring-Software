@@ -20,12 +20,11 @@ import { DotWave } from '@uiball/loaders'
 
 function App() {
   let [data, setData] = useState([]);
-  let location = useLocation()
-  let path = location.pathname
-  let navigate = useNavigate()
-  const [Loading , setLoading] = useState(true)
+  let location = useLocation();
+  let path = location.pathname;
+  let navigate = useNavigate();
+  const [Loading , setLoading] = useState(true);
 
-  
 
   useEffect(() => {
     const unsubscribe = db.collection("tracking").onSnapshot((snapshot) => {
@@ -42,19 +41,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
         setTimeout(() => {
           setLoading(false)
-        }, 3000);
-        // ...
+        }, 3000) ;
+        
       } else {
-        // User is signed out
-        // ...
         setTimeout(() => {
           setLoading(false)
           navigate('/login')
@@ -69,7 +62,7 @@ function App() {
   return (
     <>
        { !Loading && <contextData.Provider value={{ data , db , auth }}>
-        <div className="App mx-auto ">
+        <div className="App mx-auto  container ">
         { !(path === '/qrgenerate' || path.includes('/account') || path.includes('/scanpage') ) && < Header auth={auth} /> }
 
           <Routes>

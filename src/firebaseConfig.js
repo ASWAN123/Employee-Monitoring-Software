@@ -4,12 +4,12 @@ import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAXSMKiS59fbVkytc7iZzSq13GAYE8oSg0",
-    authDomain: "tracking-app-ed85c.firebaseapp.com",
-    projectId: "tracking-app-ed85c",
-    storageBucket: "tracking-app-ed85c.appspot.com",
-    messagingSenderId: "675153261090",
-    appId: "1:675153261090:web:9e03472248767193dbd07b"
+  apiKey:process.env.REACT_APP_A ,
+  authDomain:process.env.REACT_APP_B ,
+  projectId: process.env.REACT_APP_C,
+  storageBucket:process.env.REACT_APP_D ,
+  messagingSenderId:process.env.REACT_APP_E ,
+  appId: process.env.REACT_APP_F
   };
 firebase.initializeApp(firebaseConfig) ;
 

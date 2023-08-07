@@ -1,9 +1,13 @@
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { contextData } from '../../ContextData'
+import firebase from 'firebase/compat/app' ;
+import toast, { Toaster } from "react-hot-toast";
+
 
 const Tickets = () => {
-  const { data , db } = useContext(contextData)
+  const { data , db , auth } = useContext(contextData)
+  const user =  data?.find((x) => x.id == auth.currentUser.uid)  ;
 
   const handleRequest   = (e) => {
     e.preventDefault()
@@ -14,17 +18,19 @@ const Tickets = () => {
     }
 
    // handle  adding  request
-   
-   
-
+   db.collection('tracking').doc(user.id).update({...user ,  tickers:firebase.firestore.FieldValue.arrayUnion(data) })
+   const formElement = document.querySelector('#ticketform');
+   formElement.reset();
+   toast.success('Your ticket has been sent and is waiting for resolution. We will get back to you as soon as possible.')
+  
   }
 
   
 
   return (
     <div className='w-full  '>
-        <h1 className='text-black m-4 text-[18px] font-semibold  '>Tickets Management: Submit and Track Support Tickets</h1>
-        <form onSubmit={handleRequest} className='flex flex-col gap-4 w-[500px] ml-8  mt-8 '>
+        <h1 className='text-black m-4 text-[18px] font-semibold  text-center '>Tickets Management: Submit and Track Support Tickets</h1>
+        <form id="ticketform" onSubmit={handleRequest} className='flex flex-col gap-4 w-[500px] ml-8  mt-8 '>
           <div id='group' className='flex flex-col gap-2'>
             <label htmlFor="" className='text-black '>Subject</label>
             <input type="text" name="subject" className='w-full bg-transparent border  rounded-lg py-2 px-2 text-[14px]  outline-none text-black ' placeholder='example : timing error , clock not recognized '/>
@@ -38,6 +44,7 @@ const Tickets = () => {
           <button type='submit' className='bg-blue-400 px-6 py-2 '>Send</button>
 
         </form>
+        <Toaster />
     </div>
   )
 }

@@ -21,20 +21,33 @@ function formatDuration(start_date, end_date) {
 }
 
 export const Row = ({ logs }) => {
-  let rowHeaders = ["Clock in", "Clock out", "Clock in", "Clock out"];
+  let rowHeaders = ['Clock in' , 'Clock out' , 'Clock in' ,  'Clock out']
+
+  let filteredData  ;
+
+
+  let x = logs.map(x => x.Clocktimes )
+  let y = x.map(w => w.map(z => Object.values(z)).flat() ) // 7
+
+  
+  
 
   return (
     <>
-      {rowHeaders.map((x, index) => {
-        return (
-          <tr
-            key={index}
-            className="hover:bg-gray-50 py-2 text-[16px]  border-b "
-          >
+      {
+        rowHeaders.map((x , p)  => {
+          return <tr key={p}>
             <td>{x}</td>
+            {
+              y.map((w ,  index) => {
+                return <td key={index} >{ w.at(p) !== '' ? new Date(w.at(p).seconds * 1000).toLocaleTimeString('en-US') : '---'  }</td>
+              })
+            }
+
           </tr>
-        );
-      })}
+        })
+      }
+
     </>
   );
 };

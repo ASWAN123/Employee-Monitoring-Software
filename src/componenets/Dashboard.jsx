@@ -7,9 +7,11 @@ import Logs from "./DashbaordComp/Logs";
 import { useState } from "react";
 import Logo from "./Logo";
 import { getAuth, signOut } from "firebase/auth";
+import Navbar from "./DashbaordComp/Navbar";
 
 const Dashboard = ({auth}) => {
   let navigate = useNavigate() ;
+  const [ shownavbar  ,  setShownavbar ] = useState(true)
 
 
 
@@ -27,50 +29,22 @@ const Dashboard = ({auth}) => {
 
   return (
     <div className="w-full flex  text-white">
-      <nav className="w-[235px] h-screen  ">
-        <div className=" h-[60px] flex items-center bg-[#2e4981] justify-center ">
-          <Logo />
-        </div>
-        <ul className="flex flex-col gap-4 w-full p-2 ml-2 mt-4 ">
-          <Link
-            to=""
-            className="py-1 font-semibold  px-2 border-l-2 hover:border-blue-500 hover:cursor-pointer hover:bg-gray-200/20 rounded-r-md   "
-          >
-            Dashbaord
-          </Link>
-          <Link
-            to="history"
-            className="py-1 font-semibold  px-2 border-l-2 hover:border-blue-500 hover:cursor-pointer hover:bg-gray-200/20 rounded-r-md   "
-          >
-            History
-          </Link>
-          <Link
-            to="tickets"
-            className="py-1 font-semibold  px-2 border-l-2 hover:border-blue-500 hover:cursor-pointer hover:bg-gray-200/20 rounded-r-md   "
-          >
-            Tickets
-          </Link>
-          <Link
-            to="profile"
-            className="py-1 font-semibold  px-2 border-l-2 hover:border-blue-500 hover:cursor-pointer hover:bg-gray-200/20 rounded-r-md   "
-          >
-            Profile
-          </Link>
-        </ul>
-      </nav>
-      <div className="w-full h-screen bg-[#f3f4f2]">
+      { shownavbar && <Navbar />
+      }
+      <div className="w-full  bg-[#f3f4f2]">
         {/* header */}
         <header className="h-[60px] pr-4 flex items-center justify-center bg-[#010322] ">
           <AiOutlineMenu
             size={28}
             color="white"
             style={{ marginLeft: "10px" }}
+            onClick={() => {setShownavbar(!shownavbar)}}
           />
 
-          <div className="ml-4 w-[50%]  h-[40px] ">
+          {/* <div className="ml-4 w-[50%]  h-[40px] ">
             <input type="text"  className="w-full h-[100%] bg-transparent outline-none px-2 placeholder:text-[14px] text-white " placeholder="Search for , ( John Smith ) 'admin'"/>
-          </div>
-          <p>{auth.currentUser.email}</p>
+          </div> */}
+          
           <button
             type="button"
             onClick={handlelogout}
@@ -80,7 +54,7 @@ const Dashboard = ({auth}) => {
           </button>
         </header>
         {/* body */}
-        <div id="main"><Outlet /></div>
+        <div id="main" className=" "><Outlet /></div>
       </div>
     </div>
   );

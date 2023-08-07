@@ -8,34 +8,56 @@ import { contextData } from "../../ContextData";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect } from "react";
+// calendar
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+
+
 
 const Logs = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [EndDate, setEndtDate] = useState();
+
   const { auth, data, db } = useContext(contextData);
-  const logs = data?.find((x) => x.id == auth.currentUser.uid)?.workTimesData;
+  const logs =  data?.find((x) => x.id == auth.currentUser.uid).workTimesData  ;
+  let [dataTransfer ,  setDataTransfer] = useState([])
+
+  useEffect(() => {
+    let container = []
+    logs?.forEach(x => {
+      let clocktimes = x.Clocktimes
+      clocktimes?.map( y  =>  {
+        
+        let w = { 'title': y.order , backgroundColor: 'green' , 'color': y.order == 'clockIn' ? "#228b22" : "#922724"   , 'start' : new Date(parseInt(y.date)) }
+        
+        if(w.start.toString() !== 'Invalid Date' ){
+          container.push(w)
+        }
+      })
+      
+    })
+
+    setDataTransfer(container)
+    
+  } ,  [logs])
+
+
 
   return (
     <div className="w-full">
-      <h1 className="text-black m-4 text-[18px] font-semibold ">
-        Work Attendance History
-      </h1>
-      <div className="flex gap-2 items-center w-[90%] mx-auto mb-4 ">
-        {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} placeholderText="Start Date" className=" bg-transparent text-black px-1 py-1 border " />
-      <DatePicker selected={EndDate} onChange={(date) => setEndtDate(date)} placeholderText="End Date" className=" bg-transparent text-black px-1 py-1 border " /> */}
-      </div>
-      <div id="table" className="w-[90%] mx-auto">
-        <div className="relative overflow-x-auto ">
-          <table className=" text-left text-gray-500 	">
-            <thead className=" text-white  capitalize bg-[#9BABB8] text-[14px]">
-              {logs && <THead logs={logs} />}
-            </thead>
-            <tbody className="text-black">{logs && <Row logs={logs} />}</tbody>
-          </table>
-        </div>
-      </div>
+    <h1 className="text-black m-4 text-[18px] font-semibold  text-center  ">Work Attendance History</h1>
+    <div className="relative p-4 text-black ">
+      
+      <FullCalendar
+        plugins={[ dayGridPlugin ]}
+        initialView="dayGridMonth"
+        weekends={true}
+        events={[...dataTransfer ] }
+        aspectRatio={2.4}
+
+      />
     </div>
-  );
+    </div>
+  
+  )
 };
 
 export default Logs;

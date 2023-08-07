@@ -5,12 +5,15 @@ import { saveAs } from "file-saver";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import QRCode from "qrcode.react";
 import toast, { Toaster } from "react-hot-toast";
+import { useContext } from "react";
+import { contextData } from "../ContextData";
 // import { auth } from './firebaseConfig';
 
 const Qrgenerate = ({ auth }) => {
   let navigate = useNavigate();
-  const [data, setData] = useState("No result");
+  const { data , db } = useContext(contextData)
   const [isDownlaoded, setIsDownload] = useState(false);
+  const user =  data?.find((x) => x.id == auth.currentUser.uid)  ;
 
   // download the  page
   const downlaodmybadge = () => {
@@ -57,7 +60,7 @@ const Qrgenerate = ({ auth }) => {
           <div className="text-white flex flex-col items-center gap-2 text-[14px]">
             <div className="group  flex  gap-2">
               <p>Name :</p>
-              <p>{auth.currentUser.displayName}</p>
+              <p>{user.user.first_name}</p>
             </div>
             <div className="group flex  gap-2">
               <p>Email :</p>
