@@ -18,7 +18,7 @@ const Dashboard = ({auth}) => {
 
   const handlelogout = () => {
     signOut(auth).then(() => {
-      navigate('/login')
+      navigate('/Employee-Monitoring-Software/login')
     })
     .catch((error) => {
       console.log(error);

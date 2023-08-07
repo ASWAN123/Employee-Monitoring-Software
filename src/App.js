@@ -50,7 +50,7 @@ function App() {
       } else {
         setTimeout(() => {
           setLoading(false)
-          navigate('/login')
+          navigate('/Employee-Monitoring-Software')
         }, 2000);
         
   

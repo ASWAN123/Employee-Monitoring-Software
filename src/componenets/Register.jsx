@@ -77,7 +77,7 @@ const Register = ({auth}) => {
                 { !loading && <input type="submit" value='Create' className='bg-[#fbf593] px-6 cursor-pointer py-2 w-full rounded-[15px] text-black' /> }
             </form>
             <p className='text-center mt-4 md:hidden '>Or</p>
-            <div onClick={() =>{navigate('/login')}}  className='mt-5  cursor-pointer flex bg-[#8fb3ff] py-2 px-6 rounded-md  items-center justify-center gap-2 w-full md:hidden '>
+            <div onClick={() =>{navigate('/Employee-Monitoring-Software/login')}}  className='mt-5  cursor-pointer flex bg-[#8fb3ff] py-2 px-6 rounded-md  items-center justify-center gap-2 w-full md:hidden '>
             <p className=' text-black '>Login instead</p>
             <BsFillPersonCheckFill color='black' size={24}/>
             </div>
