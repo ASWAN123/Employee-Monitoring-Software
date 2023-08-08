@@ -92,8 +92,7 @@ const Scanpage = () => {
 
       <div className="w-full md:w-[500px] flex flex-col gap-4 p-6 mt-2 text-[20px] font-semibold order-1">
         <p className="text-white mb-4 text-center">
-          Attention employees: Before scanning your badge to clock in or out .
-        </p>
+        Please remember to clock in or clock out before scanning your badge. Thank you for your attention to this important step in the attendance process. Your cooperation is greatly appreciated!        </p>
         <button
           type="button"
           onClick={() => {
