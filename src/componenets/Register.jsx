@@ -17,11 +17,11 @@ const Register = ({auth}) => {
     const [ loading ,  setLoading ] = useState(false)
 
     let [userInfo , setUserInfo ] = useState({
-        first_name:'',
-        last_name : '' ,
-        email:'',
-        password:'',
-        phone:'',
+        first_name:'sara',
+        last_name : 'sara' ,
+        email:'sara1@gmail.com',
+        password:'123123',
+        phone:'123123123',
     })
 
     const CreateAccount = async (e) => {

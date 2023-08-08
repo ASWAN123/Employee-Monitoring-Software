@@ -12,15 +12,9 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_F
   };
 
-firebase.initializeApp(firebaseConfig, {
-  experimentalForceLongPolling: true, // this line
-  useFetchStreams: false, // and this line
-}) ;
+firebase.initializeApp(firebaseConfig) ;
 
 export const db = firebase.firestore();
-const myapp = initializeApp(firebaseConfig , {
-  experimentalForceLongPolling: true, // this line
-  useFetchStreams: false, // and this line
-})
+const myapp = initializeApp(firebaseConfig)
 const  auth = getAuth(myapp)
 export {auth}
