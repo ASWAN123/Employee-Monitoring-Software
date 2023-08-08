@@ -72,7 +72,7 @@ function App() {
     <>
        { !Loading && <contextData.Provider value={{ data , db , auth }}>
         <div className="App mx-auto  container ">
-        { !(path === 'Employee-Monitoring-Software/qrgenerate' || path.includes('/account') || path.includes('/scanpage') ) && < Header auth={auth} /> }
+        { !(path === '/Employee-Monitoring-Software/qrgenerate' || path.includes('/Employee-Monitoring-Software/account') || path.includes('/Employee-Monitoring-Software/scanpage') ) && < Header auth={auth} /> }
 
           <Routes>
             <Route exact path="/Employee-Monitoring-Software" element={<Homepage   />}></Route>

@@ -10,10 +10,10 @@ import { contextData } from "../ContextData";
 // import { auth } from './firebaseConfig';
 
 const Qrgenerate = ({ auth }) => {
+  let location = useLocation()
+  let name = location.state
   let navigate = useNavigate();
-  const { data , db } = useContext(contextData)
   const [isDownlaoded, setIsDownload] = useState(false);
-  const user =  data?.find((x) => x.id == auth.currentUser.uid)  ;
 
   // download the  page
   const downlaodmybadge = () => {
@@ -57,10 +57,10 @@ const Qrgenerate = ({ auth }) => {
               className="bg-white border border-black p-2 mx-auto my-auto"
             />
           </div>
-          <div className="text-white flex flex-col items-center gap-2 text-[14px]">
+          <div className="text-white flex flex-col pl-12 gap-2 text-[14px]">
             <div className="group  flex  gap-2">
               <p>Name :</p>
-              <p>{user.user.first_name}</p>
+              <p>{name}</p>
             </div>
             <div className="group flex  gap-2">
               <p>Email :</p>
@@ -81,10 +81,10 @@ const Qrgenerate = ({ auth }) => {
         </button> */}
         <button
           onClick={downlaodmybadge}
-          class="bg-blue-500 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded inline-flex items-center"
+          className="bg-blue-500 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded inline-flex items-center"
         >
           <svg
-            class="fill-current w-4 h-4 mr-2"
+            className="fill-current w-4 h-4 mr-2"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >
