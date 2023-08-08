@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Employee-Monitoring-Software/static/css/main.a127abbc.css",
-    "main.js": "/Employee-Monitoring-Software/static/js/main.c666ae97.js",
+    "main.css": "/Employee-Monitoring-Software/static/css/main.8261a682.css",
+    "main.js": "/Employee-Monitoring-Software/static/js/main.590cc689.js",
     "index.html": "/Employee-Monitoring-Software/index.html",
-    "main.a127abbc.css.map": "/Employee-Monitoring-Software/static/css/main.a127abbc.css.map",
-    "main.c666ae97.js.map": "/Employee-Monitoring-Software/static/js/main.c666ae97.js.map"
+    "main.8261a682.css.map": "/Employee-Monitoring-Software/static/css/main.8261a682.css.map",
+    "main.590cc689.js.map": "/Employee-Monitoring-Software/static/js/main.590cc689.js.map"
   },
   "entrypoints": [
-    "static/css/main.a127abbc.css",
-    "static/js/main.c666ae97.js"
+    "static/css/main.8261a682.css",
+    "static/js/main.590cc689.js"
   ]
 }
