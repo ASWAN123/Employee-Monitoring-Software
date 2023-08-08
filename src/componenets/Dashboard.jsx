@@ -18,7 +18,7 @@ const Dashboard = ({auth}) => {
 
   const handlelogout = () => {
     signOut(auth).then(() => {
-      navigate('/Employee-Monitoring-Software/login')
+      navigate('/Employee-Monitoring-Software')
     })
     .catch((error) => {
       console.log(error);
@@ -40,10 +40,6 @@ const Dashboard = ({auth}) => {
             style={{ marginLeft: "10px" }}
             onClick={() => {setShownavbar(!shownavbar)}}
           />
-
-          {/* <div className="ml-4 w-[50%]  h-[40px] ">
-            <input type="text"  className="w-full h-[100%] bg-transparent outline-none px-2 placeholder:text-[14px] text-white " placeholder="Search for , ( John Smith ) 'admin'"/>
-          </div> */}
           
           <button
             type="button"
