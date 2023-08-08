@@ -17,8 +17,8 @@ const Scanpage = () => {
     let workTimesData = userExsit?.workTimesData || [] ; // array of data
     let TodayWorkTimes = workTimesData?.find((x) => x.date == today)  ; // object
 
-    if ( !userExsit && result !== 'No result' ) { toast.error("You are not registered !!") ;refresh() }
-    if ( userExsit && action == "" ) { toast.error("You must select an option first") ;refresh() }
+    if ( !userExsit && result !== 'No result' ) { toast.error("We're sorry, but it appears that you are not registered in our system.") ;refresh() }
+    if ( userExsit && action == "" ) { toast.error("Oops! It looks like you forgot to select an option.") ;refresh() }
     if (action !== "" && userExsit ){
       // data  exist just update
       if(TodayWorkTimes){
@@ -34,9 +34,9 @@ const Scanpage = () => {
             let HappyNewDay = workTimesData.map(x=> (x.date == today) ? {...x , Clocktimes:updateClockTimes} : x )
             db.collection('tracking').doc(result).update({...userExsit ,  workTimesData: HappyNewDay })
             refresh()
-            toast.success('Successfully Clocked in')
+            toast.success('You have successfully clocked in for the day.')
           }else{
-            toast.error('You clocked in twice today')
+            toast.error("Attention, it appears that you've accidentally clocked in twice today.")
             refresh()
           }
         }
@@ -50,9 +50,9 @@ const Scanpage = () => {
             let HappyNewDay = workTimesData.map(x=> (x.date == today) ? {...x , Clocktimes:updateClockTimes} : x )
             db.collection('tracking').doc(result).update({...userExsit  , workTimesData: HappyNewDay })
             refresh()
-            toast.success('Successfully Clocked out')
+            toast.success('Congratulations! You have successfully clocked out for the day.')
           }else{
-            toast.error('You clocked out twice today')
+            toast.error("Attention, it appears that you've accidentally clocked out twice today.")
             refresh()
           }
         }
@@ -62,10 +62,10 @@ const Scanpage = () => {
         if(action == 'clock in'){
           let HappyNewDay = { 'date':today , 'Clocktimes':[ { 'order' : 'clockIn'  , date: Date.now().toString() } ] }
           refresh()
-          toast.success('Successfully Clocked in')
+          toast.success('You have successfully clocked in for the day.')
           db.collection('tracking').doc(result).update({...userExsit ,  workTimesData: [ ...workTimesData ,  HappyNewDay ] })
         }else{
-          toast.error('You did not clock in yet')
+          toast.error("Hello , it seems you haven't clocked in for the day yet. ")
           refresh()
         }
       }
@@ -73,8 +73,7 @@ const Scanpage = () => {
 
 
   } , [scanning])
-  // let userExsit1 = data?.find((doc) => doc.id == 'QI7XxJ5NPsfHOzxk7yLGz8tUYPo1') ;
-  // db.collection('tracking').doc('QI7XxJ5NPsfHOzxk7yLGz8tUYPo1').update({...userExsit1 , workTimesData:[{ date: 1690848000000, Clocktimes: [{ order: "clockIn", date: 1690875360000 }, { order: "clockOut", date: 1690886220000 }, { order: "clockIn", date: 1690894800000 }, { order: "clockOut", date: 1690908180000 }] }, { date: 1690934400000, Clocktimes: [{ order: "clockIn", date: 1690961820000 }, { order: "clockOut", date: 1690971720000 }, { order: "clockIn", date: 1690981440000 }, { order: "clockOut", date: 1690992240000 }] }, { date: 1691020800000, Clocktimes: [{ order: "clockIn", date: 1691048160000 }, { order: "clockOut", date: 1691058480000 }, { order: "clockIn", date: 1691070720000 }, { order: "clockOut", date: 1691081400000 }] }, { date: 1691107200000, Clocktimes: [{ order: "clockIn", date: 1691135460000 }, { order: "clockOut", date: 1691143260000 }, { order: "clockIn", date: 1691157300000 }, { order: "clockOut", date: 1691167320000 }] }, { date: 1691193600000, Clocktimes: [{ order: "clockIn", date: 1691221800000 }, { order: "clockOut", date: 1691231160000 }, { order: "clockIn", date: 1691242200000 }, { order: "clockOut", date: 1691252880000 }] }, { date: 1691280000000, Clocktimes: [{ order: "clockIn", date: 1691307120000 }, { order: "clockOut", date: 1691318340000 }, { order: "clockIn", date: 1691328120000 }, { order: "clockOut", date: 1691339040000 }] }, { date: 1691366400000, Clocktimes: [{ order: "clockIn", date: 1691391720000 }, { order: "clockOut", date: 1691404860000 }, { order: "clockIn", date: 1691414340000 }, { order: "clockOut", date: 1691424060000 }] }, { date: 1691452800000, Clocktimes: [{ order: "clockIn", date: 1691480160000 }, { order: "clockOut", date: 1691491560000 }, { order: "clockIn", date: 1691501700000 }, { order: "clockOut", date: 1691513340000 }] }, { date: 1691539200000, Clocktimes: [{ order: "clockIn", date: 1691567160000 }, { order: "clockOut", date: 1691577180000 }, { order: "clockIn", date: 1691586420000 }, { order: "clockOut", date: 1691599980000 }] }, { date: 1691625600000, Clocktimes: [{ order: "clockIn", date: 1691651880000 }, { order: "clockOut", date: 1691663100000 }, { order: "clockIn", date: 1691675100000 }, { order: "clockOut", date: 1691683440000 }] }, { date: 1691712000000, Clocktimes: [{ order: "clockIn", date: 1691737320000 }, { order: "clockOut", date: 1691751540000 }, { order: "clockIn", date: 1691759100000 }, { order: "clockOut", date: 1691770860000 }] }, { date: 1691798400000, Clocktimes: [{ order: "clockIn", date: 1691825160000 }, { order: "clockOut", date: 1691837220000 }, { order: "clockIn", date: 1691846760000 }, { order: "clockOut", date: 1691858040000 }] }] })
+  
   const HandleResults = (x, error) => {
     if (x && result == "No result") {
       
