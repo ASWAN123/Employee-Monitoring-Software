@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
@@ -7,13 +7,13 @@ import QRCode from "qrcode.react";
 import toast, { Toaster } from "react-hot-toast";
 import { useContext } from "react";
 import { contextData } from "../ContextData";
-// import { auth } from './firebaseConfig';
 
-const Qrgenerate = ({ auth }) => {
+const Qrgenerate = () => {
   let location = useLocation()
   let name = location.state
   let navigate = useNavigate();
   const [isDownlaoded, setIsDownload] = useState(false);
+  const { auth } = useContext(contextData)
 
   // download the  page
   const downlaodmybadge = () => {

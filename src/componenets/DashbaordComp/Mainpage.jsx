@@ -2,11 +2,10 @@ import React from 'react'
 import { useContext } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 import { contextData } from '../../ContextData'
-import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
-import { Pie } from "react-chartjs-2";
+// this  line look he  has nothing  to do  with this  compoennet but  actually  it's  important  for chat  js  to  work 
+import Chart from 'chart.js/auto'
 
 function millisecondsToDuration(milliseconds) {
   const seconds = Math.floor(milliseconds / 1000);
@@ -18,7 +17,7 @@ function millisecondsToDuration(milliseconds) {
 
 
 const Mainpage = () => {
-  const { auth, data, db } = useContext(contextData);
+  const { auth, data } = useContext(contextData);
   const logs = data?.find((x) => x.id == auth.currentUser.uid)?.workTimesData;
   let [ mydata , setMyData ] =useState([])
 

@@ -3,16 +3,12 @@ import { QrReader } from "react-qr-reader";
 import toast, { Toaster } from "react-hot-toast";
 import { useContext } from "react";
 import { contextData } from "../ContextData";
-import firebase from "firebase/compat/app";
-import { AiOutlineArrowDown } from "react-icons/ai";
 
 const Scanpage = () => {
   const [result, setResult] = useState("No result");
   const [action, setAction] = useState("");
   const [scanning, setScanning] = useState(false);
   const { data, db } = useContext(contextData);
-  const [confirmed, setConfirmed] = useState(false);
-  const [danger, setDanger] = useState(false);
   const refresh = () => { setTimeout(() => { setResult("No result");setScanning(false); setAction('') ; } ,  3000)}
 
   useEffect(() => { 

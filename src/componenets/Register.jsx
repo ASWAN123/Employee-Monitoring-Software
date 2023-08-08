@@ -1,27 +1,25 @@
 import React, { useState } from 'react'
 import { useContext } from 'react';
 import { BsFillPersonCheckFill } from "react-icons/bs";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { contextData } from '../ContextData';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
-// import { auth } from './firebaseConfig';
-import firebase from "firebase/compat/app";
-import { JellyTriangle } from '@uiball/loaders'
 import Loading from './Loading';
 import toast, { Toaster } from "react-hot-toast";
 
 
-const Register = ({auth}) => {
+const Register = () => {
     let navigate = useNavigate()
-    const  { data ,  db }  = useContext(contextData)
+    const  {  db }  = useContext(contextData)
     const [ loading ,  setLoading ] = useState(false)
+    const {auth} = useContext(contextData)
 
     let [userInfo , setUserInfo ] = useState({
-        first_name:'sara',
-        last_name : 'sara' ,
-        email:'sara1@gmail.com',
-        password:'123123',
-        phone:'123123123',
+        first_name:'',
+        last_name : '' ,
+        email:'',
+        password:'',
+        phone:'',
     })
 
     const CreateAccount = async (e) => {

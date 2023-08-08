@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Route, Routes, useMatch } from "react-router-dom";
-import Mainpage from "./DashbaordComp/Mainpage";
-import Logs from "./DashbaordComp/Logs";
 import { useState } from "react";
-import Logo from "./Logo";
-import { getAuth, signOut } from "firebase/auth";
+import {  signOut } from "firebase/auth";
 import Navbar from "./DashbaordComp/Navbar";
+import { useContext } from "react";
+import { contextData } from "../ContextData";
 
-const Dashboard = ({auth}) => {
+const Dashboard = () => {
   let navigate = useNavigate() ;
   const [ shownavbar  ,  setShownavbar ] = useState(true)
+  const { auth } = useContext(contextData)
 
 
 
@@ -40,7 +39,7 @@ const Dashboard = ({auth}) => {
             style={{ marginLeft: "10px" }}
             onClick={() => {setShownavbar(!shownavbar)}}
           />
-          
+
           <button
             type="button"
             onClick={handlelogout}

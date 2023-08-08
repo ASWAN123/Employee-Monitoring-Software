@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { useLocation } from 'react-router-dom'
 import { contextData } from '../../ContextData'
 import firebase from 'firebase/compat/app' ;
 import toast, { Toaster } from "react-hot-toast";

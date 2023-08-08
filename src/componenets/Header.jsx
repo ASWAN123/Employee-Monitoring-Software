@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
-import { AiFillHome , AiOutlineApi } from "react-icons/ai";
+import { AiFillHome  } from "react-icons/ai";
 import Logo from "./Logo";
 
 const Header = ({auth}) => {
   let navigate = useNavigate();
-  const [showMenu, setShowMenu] = useState(false);
   let location  = useLocation();
   let path = location.pathname;
 

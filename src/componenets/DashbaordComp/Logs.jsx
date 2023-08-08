@@ -1,22 +1,17 @@
 import React from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { Row } from "./table/Row";
-import THead from "./table/THead";
 import { useContext } from "react";
 import { contextData } from "../../ContextData";
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect } from "react";
 // calendar
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
-
-
 const Logs = () => {
 
-  const { auth, data, db } = useContext(contextData);
+  const { auth, data } = useContext(contextData);
   const logs =  data?.find((x) => x.id == auth.currentUser.uid).workTimesData  ;
   let [dataTransfer ,  setDataTransfer] = useState([])
 

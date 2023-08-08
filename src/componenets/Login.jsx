@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { BsFillPersonPlusFill } from "react-icons/bs";
-// import { auth } from './firebaseConfig';
-import firebase from "firebase/compat/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 import toast, { Toaster } from "react-hot-toast";
 import { LeapFrog } from "@uiball/loaders";
+import { useContext } from "react";
+import { contextData } from "../ContextData";
 
-const Login = ({ auth }) => {
+const Login = () => {
   let navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const { auth } = useContext(contextData)
   let [userdata, setUserdata] = useState({
     email: "",
     password: "",
