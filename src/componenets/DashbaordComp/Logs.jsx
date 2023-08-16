@@ -47,7 +47,6 @@ const Logs = () => {
         weekends={true}
         events={[...dataTransfer ] }
         aspectRatio={2.4}
-
       />
     </div>
     </div>

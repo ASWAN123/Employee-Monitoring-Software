@@ -16,7 +16,7 @@ const Register = () => {
 
     let [userInfo , setUserInfo ] = useState({
         first_name:'',
-        last_name : '' ,
+        last_name : '',
         email:'',
         password:'',
         phone:'',
@@ -35,8 +35,10 @@ const Register = () => {
         await createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
         .then((res) => {
             uid = res.user.uid
-            db.collection('tracking').doc(uid).set({ user:{...userInfo , 'id':uid} })
-            
+            let clonedata  = { ...userInfo }
+            delete clonedata.password
+            db.collection('tracking').doc(uid).set({ user:{...clonedata , 'id':uid} })
+
             navigate('/Employee-Monitoring-Software/qrgenerate' , {state:userInfo.first_name}  )
           })
         .catch( err => {
